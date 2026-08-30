@@ -449,8 +449,8 @@ body::before {
 </head>
 <body>
 
-<audio id="bgm" loop>
-  <source src="https://music.163.com/song/media/outer/url?id=82201.mp3" type="audio/mpeg">
+<audio id="bgm" loop preload="auto">
+  <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9A8E7E" stroke-width="2" stroke-linecap="round">
@@ -472,23 +472,15 @@ body::before {
   </div>
 </section>
 
-<!-- ===== OPENING PAIR: 园林窗景 (below cover, above invitation words) ===== -->
+<!-- ===== OPENING: 园林窗景合并海报 (below cover, above invitation words) ===== -->
 <section class="page">
   <div class="scene-page reveal">
-    <div class="pair-grid">
-      <figure class="pair-item">
-        <div class="scene-photo torn-container">
-          <img src="https://cdn.jsdelivr.net/gh/lzz66/wedding-invitation@main/artistic_photos/art_s7.jpg?v=10" class="torn-img" loading="lazy" decoding="async" alt="花窗倩影">
-        </div>
-        <figcaption class="pair-cap">花窗倩影</figcaption>
-      </figure>
-      <figure class="pair-item">
-        <div class="scene-photo torn-container">
-          <img src="https://cdn.jsdelivr.net/gh/lzz66/wedding-invitation@main/artistic_photos/art_s8.jpg?v=10" class="torn-img" loading="lazy" decoding="async" alt="隔窗远眺">
-        </div>
-        <figcaption class="pair-cap">隔窗远眺</figcaption>
-      </figure>
-    </div>
+    <figure style="margin:0;text-align:center;">
+      <div class="scene-photo torn-container" style="max-width:none;">
+        <img src="https://cdn.jsdelivr.net/gh/lzz66/wedding-invitation@main/artistic_photos/art_s78.jpg?v=10" class="torn-img" loading="lazy" decoding="async" alt="隔窗相望">
+      </div>
+      <figcaption class="pair-cap">隔窗相望</figcaption>
+    </figure>
   </div>
 </section>
 
