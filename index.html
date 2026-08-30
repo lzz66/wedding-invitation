@@ -1,720 +1,713 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>刘之壮 & 程谦 | 婚礼请帖</title>
-  <meta property="og:title" content="刘之壮 & 程谦 | 诚挚邀请您见证我们的幸福">
-  <meta property="og:description" content="2026年10月1日 · 愿有岁月可回首，且以深情共白头">
-  <meta property="og:image" content="https://lzz66.github.io/wedding-invitation/cover.jpg">
-  <meta property="og:image:width" content="400">
-  <meta property="og:image:height" content="600">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://lzz66.github.io/wedding-invitation/">
-  <meta name="twitter:card" content="summary_large_image">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --gold: #C9A96E;
-      --gold-light: #E8D5B7;
-      --gold-dark: #9A7B4A;
-      --red: #8B1A2D;
-      --red-deep: #5C0F1A;
-      --cream: #F5F0E8;
-      --cream-dark: #E8E0D4;
-      --charcoal: #2C1810;
-      --charcoal-light: #5C4A3D;
-      --white: #FAFAF8;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--charcoal);
-      color: var(--charcoal);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.8;
-    }
-    .serif { font-family: 'Noto Serif SC', Georgia, serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>刘之壮 & 程谦</title>
+<meta property="og:title" content="刘之壮 & 程谦 | 诚挚邀请您见证我们的幸福">
+<meta property="og:description" content="2026.10.01 · 愿有岁月可回首，且以深情共白头">
+<meta property="og:image" content="https://lzz66.github.io/wedding-invitation/cover.jpg">
+<meta property="og:image:width" content="400">
+<meta property="og:image:height" content="600">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lzz66.github.io/wedding-invitation/">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ===== ZINE CANVAS SYSTEM ===== */
+:root {
+  --paper: #F3EDE4;
+  --paper-warm: #EDE5D8;
+  --ink: #1E1812;
+  --ink-soft: #5A4F42;
+  --ink-faint: #9A8E7E;
+  --accent: #9B2335;
+  --accent-deep: #6B1522;
+  --gold: #B8956A;
+}
 
-    /* ===== LOADING SCREEN ===== */
-    #loader {
-      position: fixed; inset: 0;
-      background: var(--charcoal);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      z-index: 9999;
-      transition: opacity 1.2s cubic-bezier(0.22,1,0.36,1), visibility 1.2s;
-    }
-    #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .loader-title {
-      font-family: 'Noto Serif SC', serif;
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      font-weight: 300;
-      color: var(--gold-light);
-      letter-spacing: 0.3em;
-      opacity: 0;
-      animation: fadeInUp 1.5s ease 0.3s forwards;
-    }
-    .loader-names {
-      font-family: 'Noto Serif SC', serif;
-      font-size: clamp(1rem, 3vw, 1.5rem);
-      font-weight: 300;
-      color: var(--gold);
-      letter-spacing: 0.5em;
-      margin-top: 1rem;
-      opacity: 0;
-      animation: fadeInUp 1.5s ease 0.8s forwards;
-    }
-    .loader-line {
-      width: 60px; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 2rem auto;
-      opacity: 0;
-      animation: fadeInUp 1.5s ease 1.2s forwards;
-    }
-    .loader-date {
-      font-size: 0.85rem;
-      color: var(--gold-dark);
-      letter-spacing: 0.4em;
-      opacity: 0;
-      animation: fadeInUp 1.5s ease 1.5s forwards;
-    }
-    .scroll-hint {
-      position: absolute; bottom: 40px;
-      display: flex; flex-direction: column;
-      align-items: center; gap: 8px;
-      opacity: 0;
-      animation: fadeInUp 1.5s ease 2s forwards;
-    }
-    .scroll-hint span {
-      font-size: 0.7rem; color: var(--gold-dark);
-      letter-spacing: 0.2em;
-    }
-    .scroll-hint svg {
-      animation: bounce 2s infinite;
-    }
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 
-    /* ===== SCENE BASE ===== */
-    .scene {
-      position: relative;
-      width: 100%;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .scene-dark { background: var(--charcoal); color: var(--cream); }
-    .scene-cream { background: var(--cream); color: var(--charcoal); }
-    .scene-gold { background: linear-gradient(135deg, #C9A96E 0%, #9A7B4A 100%); color: var(--white); }
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
 
-    /* ===== FULLSCREEN IMAGE ===== */
-    .bg-img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: 0;
-    }
-    .bg-overlay {
-      position: absolute; inset: 0;
-      z-index: 1;
-    }
-    .overlay-gradient-b { background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%); }
-    .overlay-gradient-t { background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%); }
-    .overlay-dark { background: rgba(44,24,16,0.45); }
-    .overlay-cream { background: rgba(245,240,232,0.92); }
+body {
+  font-family: 'Noto Serif SC', 'Crimson Text', Georgia, serif;
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+}
 
-    /* ===== CONTENT POSITIONING ===== */
-    .content {
-      position: relative; z-index: 2;
-      width: 100%; max-width: 480px;
-      padding: 40px 24px;
-      text-align: center;
-    }
-    .content-wide {
-      max-width: 100%;
-      padding: 0;
-    }
+/* ===== PAPER TEXTURE ===== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.6;
+}
 
-    /* ===== TYPOGRAPHY ===== */
-    .t-huge {
-      font-family: 'Noto Serif SC', serif;
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      font-weight: 300;
-      line-height: 1.1;
-      letter-spacing: 0.15em;
-    }
-    .t-large {
-      font-family: 'Noto Serif SC', serif;
-      font-size: clamp(1.5rem, 5vw, 2.8rem);
-      font-weight: 400;
-      line-height: 1.3;
-      letter-spacing: 0.1em;
-    }
-    .t-medium {
-      font-family: 'Noto Serif SC', serif;
-      font-size: clamp(1.1rem, 3vw, 1.5rem);
-      font-weight: 400;
-      line-height: 1.6;
-      letter-spacing: 0.15em;
-    }
-    .t-small {
-      font-size: clamp(0.8rem, 2vw, 0.95rem);
-      font-weight: 300;
-      line-height: 2.2;
-      letter-spacing: 0.08em;
-    }
-    .t-caption {
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
+/* ===== LOADING ===== */
+#loader {
+  position: fixed; inset: 0;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 1.5s cubic-bezier(0.22,1,0.36,1), visibility 1.5s;
+}
+#loader.hidden { opacity: 0; visibility: hidden; }
+.loader-paper {
+  width: 120px; height: 160px;
+  background: var(--paper-warm);
+  border: 1px solid rgba(30,24,18,0.08);
+  position: relative;
+  animation: loaderFade 2s ease 0.3s both;
+}
+.loader-paper::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 3px; right: 3px;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px, transparent 2px,
+    rgba(30,24,18,0.06) 2px, rgba(30,24,18,0.06) 4px
+  );
+}
+.loader-text {
+  margin-top: 32px;
+  font-size: 0.75rem;
+  letter-spacing: 0.5em;
+  color: var(--ink-faint);
+  animation: loaderFade 2s ease 0.8s both;
+}
+@keyframes loaderFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    /* ===== DIVIDERS ===== */
-    .divider-gold {
-      width: 40px; height: 1px;
-      background: var(--gold);
-      margin: 24px auto;
-    }
-    .divider-white {
-      width: 40px; height: 1px;
-      background: rgba(255,255,255,0.4);
-      margin: 24px auto;
-    }
+/* ===== PAGE SYSTEM ===== */
+.page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 28px;
+  overflow: hidden;
+}
 
-    /* ===== SCENE 1: HERO ===== */
-    .hero-names {
-      font-family: 'Noto Serif SC', serif;
-      font-size: clamp(1.3rem, 4vw, 2rem);
-      font-weight: 300;
-      letter-spacing: 0.4em;
-      margin-bottom: 16px;
-    }
-    .hero-ampersand {
-      font-family: 'Noto Serif SC', serif;
-      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-      color: var(--gold-light);
-      letter-spacing: 0.2em;
-      margin: 8px 0;
-    }
-    .hero-date {
-      font-size: clamp(0.8rem, 2vw, 1rem);
-      letter-spacing: 0.3em;
-      color: rgba(255,255,255,0.7);
-      margin-top: 20px;
-    }
+/* ===== TYPOGRAPHY ===== */
+.type-display {
+  font-weight: 300;
+  font-size: clamp(1.6rem, 6vw, 2.8rem);
+  letter-spacing: 0.25em;
+  line-height: 1.4;
+}
+.type-title {
+  font-weight: 400;
+  font-size: clamp(1rem, 3.5vw, 1.4rem);
+  letter-spacing: 0.2em;
+  line-height: 1.6;
+}
+.type-body {
+  font-weight: 300;
+  font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+  letter-spacing: 0.08em;
+  line-height: 2.4;
+  color: var(--ink-soft);
+}
+.type-caption {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+  letter-spacing: 0.15em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+.type-number {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(3rem, 10vw, 5rem);
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.25;
+}
+.type-micro {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--ink-faint);
+}
 
-    /* ===== SCENE 2: INVITATION TEXT ===== */
-    .invitation-body {
-      padding: 80px 32px;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-    .invitation-body p {
-      margin-bottom: 1.5em;
-    }
-    .quote-mark {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 4rem;
-      color: var(--gold);
-      line-height: 0.5;
-      opacity: 0.4;
-      display: block;
-      margin-bottom: 20px;
-    }
+/* ===== TORN EDGE ===== */
+.torn-container {
+  position: relative;
+  display: inline-block;
+}
+.torn-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: sepia(8%) contrast(1.02);
+}
+.torn-top {
+  position: absolute;
+  top: -6px; left: 0; right: 0;
+  height: 12px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 12' preserveAspectRatio='none'%3E%3Cpath d='M0,8 Q20,2 40,7 T80,6 T120,8 T160,5 T200,7 T240,4 T280,8 T320,6 T360,7 T400,5 L400,12 L0,12Z' fill='%23F3EDE4'/%3E%3C/svg%3E") repeat-x;
+  background-size: 200px 100%;
+}
+.torn-bottom {
+  position: absolute;
+  bottom: -6px; left: 0; right: 0;
+  height: 12px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 12' preserveAspectRatio='none'%3E%3Cpath d='M0,4 Q30,9 60,4 T120,6 T180,3 T240,7 T300,4 T360,6 T400,4 L400,0 L0,0Z' fill='%23F3EDE4'/%3E%3C/svg%3E") repeat-x;
+  background-size: 200px 100%;
+}
+.torn-left {
+  position: absolute;
+  left: -6px; top: 0; bottom: 0;
+  width: 12px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 400' preserveAspectRatio='none'%3E%3Cpath d='M8,0 Q2,30 7,60 T6,120 T8,180 T5,240 T7,300 T4,360 T6,400 L12,400 L12,0Z' fill='%23F3EDE4'/%3E%3C/svg%3E") repeat-y;
+  background-size: 100% 200px;
+}
+.torn-right {
+  position: absolute;
+  right: -6px; top: 0; bottom: 0;
+  width: 12px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 400' preserveAspectRatio='none'%3E%3Cpath d='M4,0 Q9,40 3,80 T6,160 T4,240 T7,320 T4,400 L0,400 L0,0Z' fill='%23F3EDE4'/%3E%3C/svg%3E") repeat-y;
+  background-size: 100% 200px;
+}
 
-    /* ===== PHOTO GALLERY - MAGAZINE STYLE ===== */
-    .photo-scene {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      min-height: 600px;
-      overflow: hidden;
-    }
-    .photo-scene img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 8s ease;
-    }
-    .photo-scene:hover img {
-      transform: scale(1.03);
-    }
-    .photo-label {
-      position: absolute;
-      bottom: 40px; left: 32px;
-      z-index: 3;
-    }
-    .photo-label .num {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 3rem;
-      font-weight: 300;
-      color: var(--gold);
-      line-height: 1;
-      opacity: 0.8;
-    }
-    .photo-label .title {
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.7);
-      margin-top: 4px;
-    }
+/* ===== DIVIDERS ===== */
+.rule-short {
+  width: 32px;
+  height: 1px;
+  background: var(--ink);
+  opacity: 0.15;
+  margin: 24px auto;
+}
+.rule-accent {
+  width: 24px;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0.6;
+  margin: 20px auto;
+}
 
-    /* Split layout scenes */
-    .split-scene {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    .split-img {
-      flex: 1.2;
-      position: relative;
-      overflow: hidden;
-      min-height: 50vh;
-    }
-    .split-img img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-    }
-    .split-text {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 32px;
-      text-align: center;
-    }
-    @media (min-width: 768px) {
-      .split-scene { flex-direction: row; }
-      .split-scene.reverse { flex-direction: row-reverse; }
-      .split-img { flex: 1; min-height: auto; }
-      .split-text { flex: 1; padding: 60px; }
-    }
+/* ===== COVER PAGE ===== */
+.cover-photo {
+  width: 72%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.cover-photo .torn-img {
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+.cover-names {
+  margin-top: 40px;
+  text-align: center;
+}
+.cover-date {
+  margin-top: 16px;
+  text-align: center;
+}
 
-    /* ===== INFO CARDS ===== */
-    .info-grid {
-      display: grid;
-      gap: 1px;
-      background: var(--charcoal-light);
-      margin: 0 auto;
-      max-width: 480px;
-    }
-    .info-card {
-      background: var(--cream);
-      padding: 40px 24px;
-      text-align: center;
-    }
-    .info-card h3 {
-      font-size: 0.7rem;
-      letter-spacing: 0.4em;
-      color: var(--gold-dark);
-      margin-bottom: 16px;
-      font-weight: 400;
-    }
-    .info-card .highlight {
-      font-family: 'Noto Serif SC', serif;
-      font-size: clamp(1.3rem, 4vw, 1.8rem);
-      font-weight: 600;
-      color: var(--red);
-      letter-spacing: 0.1em;
-      margin-bottom: 8px;
-    }
-    .info-card p {
-      font-size: 0.85rem;
-      color: var(--charcoal-light);
-      line-height: 2;
-    }
-    .btn-nav {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 20px;
-      padding: 14px 36px;
-      background: var(--charcoal);
-      color: var(--cream);
-      text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      border-radius: 30px;
-      transition: all 0.3s ease;
-    }
-    .btn-nav:hover {
-      background: var(--red);
-      transform: translateY(-2px);
-    }
+/* ===== INVITATION PAGE ===== */
+.invite-page {
+  padding: 80px 32px;
+  max-width: 380px;
+  margin: 0 auto;
+}
+.invite-quote {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 4rem;
+  line-height: 0.3;
+  color: var(--accent);
+  opacity: 0.2;
+  display: block;
+  margin-bottom: 8px;
+}
 
-    /* ===== COUNTDOWN ===== */
-    .timer {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 40px;
-    }
-    .timer-box {
-      text-align: center;
-      min-width: 64px;
-    }
-    .timer-box .num {
-      font-family: 'Noto Serif SC', serif;
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      font-weight: 300;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .timer-box .label {
-      font-size: 0.65rem;
-      color: var(--gold-dark);
-      letter-spacing: 0.2em;
-      margin-top: 8px;
-    }
-    .timer-colon {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 2rem;
-      color: var(--gold-dark);
-      line-height: 1.5;
-    }
+/* ===== SCENE PAGE ===== */
+.scene-page {
+  padding: 40px 24px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+.scene-photo {
+  width: 100%;
+  position: relative;
+}
+.scene-photo .torn-img {
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
+.scene-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 24px;
+  padding-left: 4px;
+}
+.scene-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding-top: 8px;
+}
 
-    /* ===== FOOTER ===== */
-    .footer-quote {
-      font-family: 'Noto Serif SC', serif;
-      font-size: clamp(1.2rem, 4vw, 1.8rem);
-      font-weight: 300;
-      line-height: 2;
-      letter-spacing: 0.15em;
-    }
-    .heart {
-      display: inline-block;
-      animation: heartbeat 1.5s ease-in-out infinite;
-      color: var(--red);
-    }
+/* ===== INFO PAGE ===== */
+.info-grid {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+}
+.info-row {
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(30,24,18,0.06);
+  text-align: center;
+}
+.info-row:last-child { border-bottom: none; }
+.info-row h3 {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  color: var(--ink-faint);
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+.info-row .value {
+  font-weight: 400;
+  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  letter-spacing: 0.15em;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.info-row .sub {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  letter-spacing: 0.05em;
+}
+.btn-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 12px 32px;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  transition: all 0.3s ease;
+}
+.btn-map:hover { background: var(--accent); }
 
-    /* ===== ANIMATIONS ===== */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-8px); }
-      60% { transform: translateY(-4px); }
-    }
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      14% { transform: scale(1.15); }
-      28% { transform: scale(1); }
-      42% { transform: scale(1.15); }
-    }
+/* ===== COUNTDOWN ===== */
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 32px;
+}
+.timer-unit {
+  text-align: center;
+  min-width: 56px;
+}
+.timer-unit .num {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(2.2rem, 7vw, 3.5rem);
+  line-height: 1;
+  color: var(--accent);
+}
+.timer-unit .label {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+.timer-sep {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 1.5rem;
+  color: var(--ink-faint);
+  opacity: 0.4;
+  line-height: 1.8;
+}
 
-    /* Scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* ===== ENDING ===== */
+.ending-heart {
+  display: inline-block;
+  animation: heartbeat 2s ease-in-out infinite;
+  color: var(--accent);
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  20% { transform: scale(1.1); }
+  40% { transform: scale(1); }
+}
 
-    /* Music button */
-    .music-btn {
-      position: fixed;
-      top: 24px; right: 24px;
-      width: 44px; height: 44px;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      cursor: pointer;
-      border: 1px solid rgba(201,169,110,0.3);
-      animation: rotate 6s linear infinite;
-      transition: background 0.3s;
-    }
-    .music-btn:hover { background: rgba(255,255,255,0.25); }
-    .music-btn.paused { animation-play-state: paused; }
-    @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 1.2s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    /* Petals */
-    .petal {
-      position: fixed; top: -10%;
-      width: 10px; height: 10px;
-      background: linear-gradient(135deg, #ffd1dc 0%, #ffb7c5 100%);
-      border-radius: 50% 0 50% 50%;
-      opacity: 0.4;
-      animation: fall linear infinite;
-      z-index: 50;
-      pointer-events: none;
-    }
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.4; }
-      50% { transform: translateY(50vh) rotate(360deg) translateX(20px); }
-      100% { transform: translateY(110vh) rotate(720deg) translateX(-10px); opacity: 0; }
-    }
-  </style>
+/* ===== MUSIC ===== */
+.music-btn {
+  position: fixed;
+  top: 20px; right: 20px;
+  width: 40px; height: 40px;
+  background: rgba(243,237,228,0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: pointer;
+  border: 1px solid rgba(30,24,18,0.06);
+  animation: rotate 8s linear infinite;
+  transition: background 0.3s;
+}
+.music-btn.paused { animation-play-state: paused; }
+.music-btn:hover { background: rgba(243,237,228,1); }
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* ===== PETALS ===== */
+.petal {
+  position: fixed; top: -10%;
+  width: 8px; height: 8px;
+  background: linear-gradient(135deg, #E8C4C4 0%, #D4A5A5 100%);
+  border-radius: 50% 0 50% 50%;
+  opacity: 0.3;
+  animation: fall linear infinite;
+  z-index: 50;
+  pointer-events: none;
+}
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.3; }
+  50% { transform: translateY(50vh) rotate(360deg) translateX(15px); }
+  100% { transform: translateY(110vh) rotate(720deg) translateX(-5px); opacity: 0; }
+}
+
+/* ===== SPACING UTILS ===== */
+.gap-sm { height: 16px; }
+.gap-md { height: 32px; }
+.gap-lg { height: 64px; }
+.gap-xl { height: 100px; }
+
+/* ===== MOBILE FINE TUNE ===== */
+@media (min-width: 768px) {
+  .page { padding: 64px 40px; }
+  .scene-page { max-width: 480px; }
+  .cover-photo { max-width: 360px; }
+}
+</style>
 </head>
 <body>
-  <audio id="bgm" loop>
-    <source src="https://music.163.com/song/media/outer/url?id=82201.mp3" type="audio/mpeg">
-  </audio>
-  <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linecap="round">
-      <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
-    </svg>
-  </div>
-  <div id="petals"></div>
 
-  <!-- LOADING -->
-  <div id="loader">
-    <div class="loader-title">婚礼请帖</div>
-    <div class="loader-names">刘之壮 & 程谦</div>
-    <div class="loader-line"></div>
-    <div class="loader-date">2026.10.01</div>
-    <div class="scroll-hint">
-      <span>向下滑动</span>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9A7B4A" stroke-width="2" stroke-linecap="round">
-        <path d="M12 5v14M5 12l7 7 7-7"/>
-      </svg>
+<audio id="bgm" loop>
+  <source src="https://music.163.com/song/media/outer/url?id=82201.mp3" type="audio/mpeg">
+</audio>
+<div class="music-btn" id="musicBtn" onclick="toggleMusic()">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9A8E7E" stroke-width="2" stroke-linecap="round">
+    <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+  </svg>
+</div>
+<div id="petals"></div>
+
+<!-- LOADING -->
+<div id="loader">
+  <div class="loader-paper"></div>
+  <div class="loader-text">请柬</div>
+</div>
+
+<!-- ===== PAGE 1: COVER ===== -->
+<section class="page">
+  <div class="reveal">
+    <div class="cover-photo torn-container">
+      <div class="torn-top"></div><div class="torn-bottom"></div>
+      <div class="torn-left"></div><div class="torn-right"></div>
+      <img src="photo1.jpg" class="torn-img" alt="cover">
+    </div>
+    <div class="cover-names">
+      <div class="type-display">刘之壮</div>
+      <div class="type-caption" style="margin:8px 0;">&amp;</div>
+      <div class="type-display">程谦</div>
+    </div>
+    <div class="cover-date">
+      <div class="rule-short"></div>
+      <div class="type-micro">2026.10.01</div>
     </div>
   </div>
+</section>
 
-  <!-- SCENE 1: HERO -->
-  <section class="scene" style="height:100vh;">
-    <img src="photo1.jpg" class="bg-img" alt="cover">
-    <div class="bg-overlay overlay-gradient-b"></div>
-    <div class="content">
-      <div class="reveal">
-        <div class="hero-names serif">刘之壮 <span class="hero-ampersand">&</span> 程谦</div>
-        <div class="divider-white"></div>
-        <div class="t-medium" style="color:rgba(255,255,255,0.85); letter-spacing:0.3em;">我们结婚啦</div>
-        <div class="hero-date">2026年10月1日 · 星期三</div>
+<!-- ===== PAGE 2: INVITATION ===== -->
+<section class="page">
+  <div class="invite-page reveal">
+    <span class="invite-quote">"</span>
+    <p class="type-title" style="margin-bottom:32px;">
+      从相识到相知<br>
+      从相爱到相守
+    </p>
+    <div class="rule-accent"></div>
+    <p class="type-body">
+      我们决定携手一生<br><br>
+      在这美好的季节里<br>
+      诚挚邀请您<br>
+      见证我们人生中最重要的时刻
+    </p>
+    <div class="gap-lg"></div>
+    <div class="type-caption">Wedding Invitation</div>
+  </div>
+</section>
+
+<!-- ===== PAGE 3: SCENE 01 ===== -->
+<section class="page">
+  <div class="scene-page reveal">
+    <div class="scene-photo torn-container">
+      <div class="torn-top"></div><div class="torn-bottom"></div>
+      <div class="torn-left"></div><div class="torn-right"></div>
+      <img src="photo2.jpg" class="torn-img" alt="scene 01">
+    </div>
+    <div class="scene-meta">
+      <div class="type-number">01</div>
+      <div class="scene-label">锦绣良缘</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAGE 4: SCENE 02 ===== -->
+<section class="page">
+  <div class="scene-page reveal">
+    <div class="scene-photo torn-container">
+      <div class="torn-top"></div><div class="torn-bottom"></div>
+      <div class="torn-left"></div><div class="torn-right"></div>
+      <img src="photo3.jpg" class="torn-img" alt="scene 02">
+    </div>
+    <div class="scene-meta" style="justify-content:flex-end;">
+      <div class="scene-label">纯真之约</div>
+      <div class="type-number">02</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAGE 5: SCENE 03 ===== -->
+<section class="page">
+  <div class="scene-page reveal">
+    <div class="scene-photo torn-container">
+      <div class="torn-top"></div><div class="torn-bottom"></div>
+      <div class="torn-left"></div><div class="torn-right"></div>
+      <img src="photo4.jpg" class="torn-img" alt="scene 03">
+    </div>
+    <div class="scene-meta">
+      <div class="type-number">03</div>
+      <div class="scene-label">执手同行</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAGE 6: SCENE 04 ===== -->
+<section class="page">
+  <div class="scene-page reveal">
+    <div class="scene-photo torn-container">
+      <div class="torn-top"></div><div class="torn-bottom"></div>
+      <div class="torn-left"></div><div class="torn-right"></div>
+      <img src="photo5.jpg" class="torn-img" alt="scene 04">
+    </div>
+    <div class="scene-meta" style="justify-content:flex-end;">
+      <div class="scene-label">此生不负</div>
+      <div class="type-number">04</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAGE 7: SCENE 05 ===== -->
+<section class="page">
+  <div class="scene-page reveal">
+    <div class="scene-photo torn-container">
+      <div class="torn-top"></div><div class="torn-bottom"></div>
+      <div class="torn-left"></div><div class="torn-right"></div>
+      <img src="photo6.jpg" class="torn-img" alt="scene 05">
+    </div>
+    <div class="scene-meta">
+      <div class="type-number">05</div>
+      <div class="scene-label">定格永恒</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAGE 8: SCENE 06 ===== -->
+<section class="page">
+  <div class="scene-page reveal">
+    <div class="scene-photo torn-container">
+      <div class="torn-top"></div><div class="torn-bottom"></div>
+      <div class="torn-left"></div><div class="torn-right"></div>
+      <img src="photo7.jpg" class="torn-img" alt="scene 06">
+    </div>
+    <div class="scene-meta" style="justify-content:flex-end;">
+      <div class="scene-label">岁月静好</div>
+      <div class="type-number">06</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAGE 9: INFO ===== -->
+<section class="page">
+  <div class="reveal" style="width:100%;max-width:340px;">
+    <div class="type-caption" style="text-align:center;margin-bottom:8px;">Wedding</div>
+    <div class="type-title" style="text-align:center;margin-bottom:48px;">婚礼信息</div>
+    <div class="info-grid">
+      <div class="info-row">
+        <h3>时间</h3>
+        <div class="value">2026.10.01</div>
+        <div class="sub">农历八月十一 · 星期三 · 11:58</div>
+      </div>
+      <div class="info-row">
+        <h3>地点</h3>
+        <div class="value">黄陂合禧宴会艺术中心</div>
+        <div class="sub">一楼合禧厅 · 板桥大道185号</div>
+        <a href="https://surl.amap.com/gOd72Wy1Aa42" class="btn-map">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          导航
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SCENE 2: INVITATION -->
-  <section class="scene scene-cream">
-    <div class="invitation-body">
-      <div class="reveal">
-        <span class="quote-mark serif">"</span>
-        <p class="t-medium serif" style="color:var(--charcoal); margin-bottom:32px;">
-          从相识到相知<br>
-          从相爱到相守<br>
-          我们决定携手一生
-        </p>
-        <div class="divider-gold"></div>
-        <p class="t-small" style="color:var(--charcoal-light);">
-          在这美好的季节里<br>
-          诚挚邀请您<br>
-          见证我们人生中最重要的时刻<br>
-          分享我们的幸福与喜悦
-        </p>
-      </div>
+<!-- ===== PAGE 10: COUNTDOWN ===== -->
+<section class="page">
+  <div class="reveal" style="text-align:center;">
+    <div class="type-caption" style="margin-bottom:8px;">Countdown</div>
+    <div class="type-title" style="margin-bottom:32px;">倒计时</div>
+    <div class="rule-accent"></div>
+    <div class="timer">
+      <div class="timer-unit"><div class="num" id="days">00</div><div class="label">天</div></div>
+      <div class="timer-sep">:</div>
+      <div class="timer-unit"><div class="num" id="hours">00</div><div class="label">时</div></div>
+      <div class="timer-sep">:</div>
+      <div class="timer-unit"><div class="num" id="minutes">00</div><div class="label">分</div></div>
+      <div class="timer-sep">:</div>
+      <div class="timer-unit"><div class="num" id="seconds">00</div><div class="label">秒</div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SCENE 3: PHOTO - 中式 -->
-  <section class="photo-scene">
-    <img src="photo2.jpg" alt="中式礼服">
-    <div class="bg-overlay overlay-dark"></div>
-    <div class="photo-label">
-      <div class="num serif">01</div>
-      <div class="title">中式 · 锦绣良缘</div>
-    </div>
-  </section>
+<!-- ===== PAGE 11: ENDING ===== -->
+<section class="page">
+  <div class="reveal" style="text-align:center;max-width:320px;">
+    <div class="gap-xl"></div>
+    <p class="type-title" style="line-height:2.2;">
+      愿有岁月可回首<br>
+      且以深情共白头
+    </p>
+    <div class="rule-short" style="margin:32px auto;"></div>
+    <p class="type-micro">
+      期待与您相见 <span class="ending-heart">&#10084;</span>
+    </p>
+    <div class="gap-xl"></div>
+    <div class="type-caption">刘之壮 &middot; 程谦</div>
+  </div>
+</section>
 
-  <!-- SCENE 4: PHOTO - 西式 -->
-  <section class="photo-scene">
-    <img src="photo3.jpg" alt="西式婚纱">
-    <div class="bg-overlay overlay-dark"></div>
-    <div class="photo-label" style="left:auto; right:32px; text-align:right;">
-      <div class="num serif">02</div>
-      <div class="title">白纱 · 纯真之约</div>
-    </div>
-  </section>
+<script>
+// Loader
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 2000);
+});
 
-  <!-- SCENE 5: PHOTO - 优雅 -->
-  <section class="photo-scene">
-    <img src="photo4.jpg" alt="优雅瞬间">
-    <div class="bg-overlay overlay-dark"></div>
-    <div class="photo-label">
-      <div class="num serif">03</div>
-      <div class="title">繁花 · 执手同行</div>
-    </div>
-  </section>
+// Music
+let musicPlayed = false;
+function toggleMusic() {
+  const audio = document.getElementById('bgm');
+  const btn = document.getElementById('musicBtn');
+  if (audio.paused) {
+    audio.play().catch(() => {});
+    btn.classList.remove('paused');
+  } else {
+    audio.pause();
+    btn.classList.add('paused');
+  }
+}
+function autoPlay() {
+  const audio = document.getElementById('bgm');
+  if (!musicPlayed) {
+    audio.play().then(() => { musicPlayed = true; }).catch(() => {});
+  }
+}
+document.addEventListener('touchstart', autoPlay, { once: true });
+document.addEventListener('click', autoPlay, { once: true });
 
-  <!-- SCENE 6: PHOTO - 教堂 -->
-  <section class="photo-scene">
-    <img src="photo5.jpg" alt="教堂">
-    <div class="bg-overlay overlay-dark"></div>
-    <div class="photo-label" style="left:auto; right:32px; text-align:right;">
-      <div class="num serif">04</div>
-      <div class="title">誓言 · 此生不负</div>
-    </div>
-  </section>
+// Petals
+function createPetal() {
+  const petal = document.createElement('div');
+  petal.className = 'petal';
+  petal.style.left = Math.random() * 100 + 'vw';
+  petal.style.animationDuration = (Math.random() * 4 + 7) + 's';
+  petal.style.opacity = Math.random() * 0.25 + 0.15;
+  const scale = Math.random() * 0.4 + 0.6;
+  petal.style.transform = `scale(${scale})`;
+  document.getElementById('petals').appendChild(petal);
+  setTimeout(() => petal.remove(), 12000);
+}
+setInterval(createPetal, 900);
 
-  <!-- SCENE 7: PHOTO - 古典 -->
-  <section class="photo-scene">
-    <img src="photo6.jpg" alt="古典">
-    <div class="bg-overlay overlay-dark"></div>
-    <div class="photo-label">
-      <div class="num serif">05</div>
-      <div class="title">时光 · 定格永恒</div>
-    </div>
-  </section>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  <!-- SCENE 8: PHOTO - 园林 -->
-  <section class="photo-scene">
-    <img src="photo7.jpg" alt="园林">
-    <div class="bg-overlay overlay-dark"></div>
-    <div class="photo-label" style="left:auto; right:32px; text-align:right;">
-      <div class="num serif">06</div>
-      <div class="title">江南 · 岁月静好</div>
-    </div>
-  </section>
+// Countdown
+function updateCountdown() {
+  const weddingDate = new Date('2026-10-01T11:58:00');
+  const now = new Date();
+  const diff = weddingDate - now;
+  if (diff > 0) {
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+    document.getElementById('days').textContent = String(d).padStart(2, '0');
+    document.getElementById('hours').textContent = String(h).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+  }
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
 
-  <!-- SCENE 9: INFO -->
-  <section class="scene scene-cream" style="padding: 80px 20px;">
-    <div class="content" style="max-width: 480px;">
-      <div class="reveal">
-        <div class="t-caption" style="margin-bottom: 8px;">WEDDING INFO</div>
-        <div class="t-large serif" style="margin-bottom: 40px;">婚礼信息</div>
-        <div class="info-grid">
-          <div class="info-card">
-            <h3>时间 TIME</h3>
-            <div class="highlight serif">2026年10月1日</div>
-            <p>农历八月十一 · 星期三<br>中午 11:58</p>
-          </div>
-          <div class="info-card">
-            <h3>地点 LOCATION</h3>
-            <div class="highlight serif" style="font-size: 1.1rem;">黄陂合禧宴会艺术中心</div>
-            <p>一楼合禧厅<br>板桥大道185号</p>
-            <a href="https://surl.amap.com/gOd72Wy1Aa42" class="btn-nav">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              导航前往
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+document.title = '刘之壮 & 程谦 | 诚挚邀请您见证幸福';
+</script>
 
-  <!-- SCENE 10: COUNTDOWN -->
-  <section class="scene scene-dark" style="padding: 100px 20px;">
-    <div class="content">
-      <div class="reveal">
-        <div class="t-caption" style="margin-bottom: 8px;">COUNTDOWN</div>
-        <div class="t-large serif" style="margin-bottom: 8px; color: var(--cream);">倒计时</div>
-        <div class="divider-gold"></div>
-        <div class="timer">
-          <div class="timer-box"><span class="num" id="days">00</span><span class="label">天</span></div>
-          <div class="timer-colon">:</div>
-          <div class="timer-box"><span class="num" id="hours">00</span><span class="label">时</span></div>
-          <div class="timer-colon">:</div>
-          <div class="timer-box"><span class="num" id="minutes">00</span><span class="label">分</span></div>
-          <div class="timer-colon">:</div>
-          <div class="timer-box"><span class="num" id="seconds">00</span><span class="label">秒</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SCENE 11: FOOTER -->
-  <section class="scene" style="height: 100vh;">
-    <img src="photo7.jpg" class="bg-img" alt="结尾">
-    <div class="bg-overlay overlay-gradient-t"></div>
-    <div class="content">
-      <div class="reveal">
-        <div class="footer-quote serif" style="color: var(--cream); margin-bottom: 20px;">
-          愿有岁月可回首<br>
-          且以深情共白头
-        </div>
-        <div class="divider-white"></div>
-        <p class="t-small" style="color: rgba(255,255,255,0.6);">
-          期待与您相见 <span class="heart">❤</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // Loader
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('loader').classList.add('hidden');
-      }, 2500);
-    });
-
-    // Music
-    let musicPlayed = false;
-    function toggleMusic() {
-      const audio = document.getElementById('bgm');
-      const btn = document.getElementById('musicBtn');
-      if (audio.paused) {
-        audio.play().catch(() => {});
-        btn.classList.remove('paused');
-      } else {
-        audio.pause();
-        btn.classList.add('paused');
-      }
-    }
-    function autoPlay() {
-      const audio = document.getElementById('bgm');
-      if (!musicPlayed) {
-        audio.play().then(() => { musicPlayed = true; }).catch(() => {});
-      }
-    }
-    document.addEventListener('touchstart', autoPlay, { once: true });
-    document.addEventListener('click', autoPlay, { once: true });
-
-    // Petals
-    function createPetal() {
-      const petal = document.createElement('div');
-      petal.className = 'petal';
-      petal.style.left = Math.random() * 100 + 'vw';
-      petal.style.animationDuration = (Math.random() * 4 + 6) + 's';
-      petal.style.opacity = Math.random() * 0.3 + 0.2;
-      const scale = Math.random() * 0.5 + 0.5;
-      petal.style.transform = `scale(${scale})`;
-      document.getElementById('petals').appendChild(petal);
-      setTimeout(() => petal.remove(), 11000);
-    }
-    setInterval(createPetal, 800);
-
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // Countdown
-    function updateCountdown() {
-      const weddingDate = new Date('2026-10-01T11:58:00');
-      const now = new Date();
-      const diff = weddingDate - now;
-      if (diff > 0) {
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
-        document.getElementById('days').textContent = String(d).padStart(2, '0');
-        document.getElementById('hours').textContent = String(h).padStart(2, '0');
-        document.getElementById('minutes').textContent = String(m).padStart(2, '0');
-        document.getElementById('seconds').textContent = String(s).padStart(2, '0');
-      }
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    // Dynamic title
-    document.title = '刘之壮 & 程谦 | 诚挚邀请您见证幸福';
-  </script>
 </body>
 </html>
