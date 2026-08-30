@@ -671,14 +671,40 @@ window.addEventListener('load', () => {
   }, 1200);
 });
 
-// CDN fallback: if jsDelivr fails, fall back to same-origin (GitHub Pages)
+// CDN fallback: cascade through jsDelivr mirrors, then same-origin (GitHub Pages)
+const IMG_HOSTS = [
+  'https://cdn.jsdelivr.net/gh/lzz66/wedding-invitation@main/',
+  'https://fastly.jsdelivr.net/gh/lzz66/wedding-invitation@main/',
+  'https://gcore.jsdelivr.net/gh/lzz66/wedding-invitation@main/',
+  'https://testingcf.jsdelivr.net/gh/lzz66/wedding-invitation@main/',
+  ''
+];
+function imgPath(src) {
+  const m = src.match(/artistic_photos\/[^?"]+/);
+  return m ? m[0] : null;
+}
+function nextHost(t) {
+  const p = imgPath(t.src);
+  if (!p) return;
+  const q = (t.src.match(/\?v=\d+/) || [''])[0];
+  const i = parseInt(t.dataset.fbk || '0', 10) + 1;
+  if (i >= IMG_HOSTS.length) return;
+  t.dataset.fbk = String(i);
+  const base = IMG_HOSTS[i];
+  t.src = base ? base + p + q : p + q;
+}
 document.addEventListener('error', (e) => {
   const t = e.target;
-  if (t && t.tagName === 'IMG' && !t.dataset.fbk) {
-    const m = t.src.match(/artistic_photos\/[^?"]+/);
-    if (m) { t.dataset.fbk = '1'; t.src = m[0]; }
-  }
+  if (t && t.tagName === 'IMG') nextHost(t);
 }, true);
+// Watchdog: visible images still unloaded after 8s switch to next host
+setInterval(() => {
+  document.querySelectorAll('img[src*="jsdelivr.net"]').forEach(t => {
+    if (t.complete && t.naturalWidth > 0) return;
+    const r = t.getBoundingClientRect();
+    if (r.top < innerHeight * 2 && r.bottom > -innerHeight) nextHost(t);
+  });
+}, 8000);
 
 // Music
 let musicPlayed = false;
