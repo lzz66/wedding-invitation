@@ -224,15 +224,17 @@ body::before {
 /* ===== PAIR GRID ===== */
 .pair-grid {
   display: flex;
-  gap: 18px;
+  flex-direction: column;
+  gap: 28px;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
 }
 .pair-item {
   flex: 1 1 0;
   min-width: 0;
-  max-width: 224px;
+  width: 100%;
+  max-width: none;
   text-align: center;
   margin: 0;
 }
@@ -256,13 +258,13 @@ body::before {
 
 /* ===== SCENE PAGE ===== */
 .scene-page {
-  padding: 40px 24px;
-  max-width: 420px;
-  margin: 0 auto;
+  padding: 28px 8px;
+  max-width: 480px;
+  margin: 0 -22px;
 }
 .scene-photo {
   width: 100%;
-  max-width: 360px;
+  max-width: 440px;
   margin: 0 auto;
   position: relative;
 }
@@ -436,8 +438,10 @@ body::before {
 /* ===== MOBILE FINE TUNE ===== */
 @media (min-width: 768px) {
   .page { padding: 64px 40px; }
-  .scene-page { max-width: 480px; }
+  .scene-page { max-width: 480px; margin: 0 auto; }
   .cover-photo { max-width: 360px; }
+  .pair-grid { flex-direction: row; gap: 18px; align-items: flex-start; }
+  .pair-item { max-width: 224px; }
 }
 </style>
 </head>
