@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.loli.net" crossorigin>
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/lzz66/wedding-invitation@main/artistic_photos/art_cover.jpg">
+<link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/lzz66/wedding-invitation@main/artistic_photos/art_cover.jpg?v=9">
 <link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;400;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 /* ===== ZINE CANVAS SYSTEM ===== */
@@ -186,22 +186,25 @@ body::before {
 }
 
 /* ===== COVER PAGE ===== */
+.cover-page {
+  padding: 0;
+}
+.cover-page .reveal {
+  width: 100%;
+  height: 100%;
+}
 .cover-photo {
-  width: 72%;
-  max-width: 320px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  height: 100vh;
+  height: 100svh;
+  margin: 0;
 }
 .cover-photo .torn-img {
   width: 100%;
-  height: auto;
-}
-.cover-names {
-  margin-top: 40px;
-  text-align: center;
-}
-.cover-date {
-  margin-top: 16px;
-  text-align: center;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
 }
 
 /* ===== INVITATION PAGE ===== */
@@ -439,7 +442,6 @@ body::before {
 @media (min-width: 768px) {
   .page { padding: 64px 40px; }
   .scene-page { max-width: 480px; margin: 0 auto; }
-  .cover-photo { max-width: 360px; }
   .pair-grid { flex-direction: row; gap: 18px; align-items: flex-start; }
   .pair-item { max-width: 224px; }
 }
@@ -463,22 +465,10 @@ body::before {
   <div class="loader-text">请柬</div>
 </div>
 
-<!-- ===== PAGE 1: COVER ===== -->
-<section class="page">
-  <div class="reveal">
-    <div class="cover-photo torn-container">
-
-      <img src="https://cdn.jsdelivr.net/gh/lzz66/wedding-invitation@main/artistic_photos/art_cover.jpg?v=8" class="torn-img" fetchpriority="high" decoding="async" alt="cover">
-    </div>
-    <div class="cover-names">
-      <div class="type-display">刘之壮</div>
-      <div class="type-caption" style="margin:8px 0;">&amp;</div>
-      <div class="type-display">程谦</div>
-    </div>
-    <div class="cover-date">
-      <div class="rule-short"></div>
-      <div class="type-micro">2026.10.01</div>
-    </div>
+<!-- ===== PAGE 1: COVER (full-screen poster with names & date baked in) ===== -->
+<section class="page cover-page">
+  <div class="cover-photo torn-container reveal">
+    <img src="https://cdn.jsdelivr.net/gh/lzz66/wedding-invitation@main/artistic_photos/art_cover.jpg?v=9" class="torn-img" fetchpriority="high" decoding="async" alt="刘之壮与程谦的婚礼邀请封面">
   </div>
 </section>
 
