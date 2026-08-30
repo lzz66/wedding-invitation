@@ -215,6 +215,40 @@ body::before {
   margin-bottom: 8px;
 }
 
+
+/* ===== PAIR GRID ===== */
+.pair-grid {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+.pair-item {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 224px;
+  text-align: center;
+  margin: 0;
+}
+.pair-item .scene-photo {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+.pair-item .torn-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/5;
+  object-fit: cover;
+}
+.pair-cap {
+  margin-top: 16px;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--ink-faint);
+}
+
 /* ===== SCENE PAGE ===== */
 .scene-page {
   padding: 40px 24px;
@@ -425,7 +459,7 @@ body::before {
   <div class="reveal">
     <div class="cover-photo torn-container">
 
-      <img src="artistic_photos/art_cover.jpg?v=5" class="torn-img" alt="cover">
+      <img src="artistic_photos/art_cover.jpg?v=6" class="torn-img" alt="cover">
     </div>
     <div class="cover-names">
       <div class="type-display">刘之壮</div>
@@ -459,86 +493,62 @@ body::before {
   </div>
 </section>
 
-<!-- ===== PAGE 3: SCENE 01 ===== -->
+<!-- ===== PAGE 3: MEMORIES A ===== -->
 <section class="page">
   <div class="scene-page reveal">
-    <div class="scene-photo torn-container">
-
-      <img src="artistic_photos/art_s1.jpg?v=5" class="torn-img" alt="scene 01">
-    </div>
-    <div class="scene-meta">
-      <div class="type-number">01</div>
-      <div class="scene-label">锦绣良缘</div>
+    <div class="pair-grid">
+      <figure class="pair-item">
+        <div class="scene-photo torn-container">
+          <img src="artistic_photos/art_s1.jpg?v=6" class="torn-img" alt="scene 01">
+        </div>
+        <figcaption class="pair-cap">壹 · 锦绣良缘</figcaption>
+      </figure>
+      <figure class="pair-item">
+        <div class="scene-photo torn-container">
+          <img src="artistic_photos/art_s2.jpg?v=6" class="torn-img" alt="scene 02">
+        </div>
+        <figcaption class="pair-cap">贰 · 纯真之约</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- ===== PAGE 4: SCENE 02 ===== -->
+<!-- ===== PAGE 4: MEMORIES B ===== -->
 <section class="page">
   <div class="scene-page reveal">
-    <div class="scene-photo torn-container">
-
-      <img src="artistic_photos/art_s2.jpg?v=5" class="torn-img" alt="scene 02">
-    </div>
-    <div class="scene-meta" style="justify-content:flex-end;">
-      <div class="scene-label">纯真之约</div>
-      <div class="type-number">02</div>
+    <div class="pair-grid">
+      <figure class="pair-item">
+        <div class="scene-photo torn-container">
+          <img src="artistic_photos/art_s3.jpg?v=6" class="torn-img" alt="scene 03">
+        </div>
+        <figcaption class="pair-cap">叁 · 执手同行</figcaption>
+      </figure>
+      <figure class="pair-item">
+        <div class="scene-photo torn-container">
+          <img src="artistic_photos/art_s4.jpg?v=6" class="torn-img" alt="scene 04">
+        </div>
+        <figcaption class="pair-cap">肆 · 此生不负</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- ===== PAGE 5: SCENE 03 ===== -->
+<!-- ===== PAGE 5: MEMORIES C ===== -->
 <section class="page">
   <div class="scene-page reveal">
-    <div class="scene-photo torn-container">
-
-      <img src="artistic_photos/art_s3.jpg?v=5" class="torn-img" alt="scene 03">
-    </div>
-    <div class="scene-meta">
-      <div class="type-number">03</div>
-      <div class="scene-label">执手同行</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PAGE 6: SCENE 04 ===== -->
-<section class="page">
-  <div class="scene-page reveal">
-    <div class="scene-photo torn-container">
-
-      <img src="artistic_photos/art_s4.jpg?v=5" class="torn-img" alt="scene 04">
-    </div>
-    <div class="scene-meta" style="justify-content:flex-end;">
-      <div class="scene-label">此生不负</div>
-      <div class="type-number">04</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PAGE 7: SCENE 05 ===== -->
-<section class="page">
-  <div class="scene-page reveal">
-    <div class="scene-photo torn-container">
-
-      <img src="artistic_photos/art_s5.jpg?v=5" class="torn-img" alt="scene 05">
-    </div>
-    <div class="scene-meta">
-      <div class="type-number">05</div>
-      <div class="scene-label">定格永恒</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PAGE 8: SCENE 06 ===== -->
-<section class="page">
-  <div class="scene-page reveal">
-    <div class="scene-photo torn-container">
-
-      <img src="artistic_photos/art_s6.jpg?v=5" class="torn-img" alt="scene 06">
-    </div>
-    <div class="scene-meta" style="justify-content:flex-end;">
-      <div class="scene-label">岁月静好</div>
-      <div class="type-number">06</div>
+    <div class="pair-grid">
+      <figure class="pair-item">
+        <div class="scene-photo torn-container">
+          <img src="artistic_photos/art_s5.jpg?v=6" class="torn-img" alt="scene 05">
+        </div>
+        <figcaption class="pair-cap">伍 · 定格永恒</figcaption>
+      </figure>
+      <figure class="pair-item">
+        <div class="scene-photo torn-container">
+          <img src="artistic_photos/art_s6.jpg?v=6" class="torn-img" alt="scene 06">
+        </div>
+        <figcaption class="pair-cap">陆 · 岁月静好</figcaption>
+      </figure>
     </div>
   </div>
 </section>
