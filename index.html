@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>刘之壮 & 程谦</title>
-<meta property="og:title" content="刘之壮 & 程谦 | 诚挚邀请您见证我们的幸福">
+<title>刘之壮 & 程谦 | 的婚礼邀请</title>
+<meta property="og:title" content="刘之壮 & 程谦 | 的婚礼邀请">
 <meta property="og:description" content="2026.10.01 · 愿有岁月可回首，且以深情共白头">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/lzz66/wedding-invitation@main/cover.jpg">
 <meta property="og:image:width" content="768">
@@ -450,7 +450,7 @@ body::before {
 <body>
 
 <audio id="bgm" loop preload="auto">
-  <source src="bgm.mp3" type="audio/mpeg">
+  <source src="https://cdn.jsdelivr.net/gh/lzz66/wedding-invitation@main/bgm.mp3?v=10" type="audio/mpeg">
 </audio>
 <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9A8E7E" stroke-width="2" stroke-linecap="round">
@@ -674,6 +674,24 @@ setInterval(() => {
 
 // Music
 let musicPlayed = false;
+// BGM source fallback: CDN first (fast in China), same-origin if it errors or stalls
+(function () {
+  const a = document.getElementById('bgm');
+  let swapped = false;
+  function toLocal() {
+    if (swapped) return;
+    swapped = true;
+    const wasPlaying = musicPlayed && !a.paused;
+    a.src = 'bgm.mp3';
+    a.load();
+    if (wasPlaying) a.play().catch(() => {});
+  }
+  a.addEventListener('error', toLocal);
+  const srcEl = a.querySelector('source');
+  if (srcEl) srcEl.addEventListener('error', toLocal);
+  // if not enough data to play within 6s of page load, switch source
+  setTimeout(() => { if (a.readyState < 3) toLocal(); }, 6000);
+})();
 function toggleMusic() {
   const audio = document.getElementById('bgm');
   const btn = document.getElementById('musicBtn');
@@ -735,7 +753,7 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-document.title = '刘之壮 & 程谦 | 诚挚邀请您见证幸福';
+document.title = '刘之壮 & 程谦 | 的婚礼邀请';
 </script>
 
 </body>
